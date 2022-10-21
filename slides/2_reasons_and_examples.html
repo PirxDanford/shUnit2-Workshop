@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>shUnit 2 Workshop - Why to use it and examples</title>
+
+		<link rel="stylesheet" href="revealjs.4.4.0/dist/reset.css">
+		<link rel="stylesheet" href="revealjs.4.4.0/dist/reveal.css">
+		<link rel="stylesheet" href="revealjs.4.4.0/dist/theme/black.css">
+		<link rel="stylesheet" href="revealjs.4.4.0/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Why?</h1>
+						Of course the full question should be:<br>Why is unit testing for shell scripts important?<br><br>
+						The simple answer to that is:<br>for all the same reasons that testing in general is important and even results in a whole process template like the <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Test Driven Development</a>
+					</section>
+					<section>
+						A more complex answer is:<br><ul>
+							<li>
+								Reap the benefits of <a href="https://en.wikipedia.org/wiki/Shift-left_testing" target="_blank">Shift Left Testing</a><ul>
+								<li>Early detection of defects</li>
+								<li>Easier debugging through implicit documentation of expected behaviour</li>
+								<li>Extending the code coverage to include the deployment logic</li>
+								<li>Reduce technical debt st an early stage</li>
+								</ul>
+							</li>
+							<li>Saving money: catching bugs early on, will save costs in QA and customer support</li>
+							<li>Reliable code that is easy to reuse</li>
+						</ul>
+					</section>
+					<section>
+						In a nutshell: shell scripts deserve the same love that we grant our code in general and implementing unit testing will provide many benefits.
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="revealjs.4.4.0/dist/reveal.js"></script>
+		<script src="revealjs.4.4.0/plugin/notes/notes.js"></script>
+		<script src="revealjs.4.4.0/plugin/markdown/markdown.js"></script>
+		<script src="revealjs.4.4.0/plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
