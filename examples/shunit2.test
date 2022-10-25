@@ -1,0 +1,7 @@
+#!/bin/sh
+
+testOneIsOne() {
+  assertEquals 1 1
+}
+
+. shunit2

@@ -1,3 +1,13 @@
+# Run the examples locally
+
+In your shell and directory of choosing do
+```console
+git clone https://github.com/PirxDanford/shUnit2-Workshop.git`
+cd shUnit2-Workshop
+./examples/shunit2.test
+```
+if you see errors, please check the setup README.md.
+
 # Using a function
 
 For this example a function is defined, with 2 execution variants.
@@ -20,9 +30,18 @@ Extends random_silent and introduces parameters with default values to directly 
 
 If the tests pass we additionally can be sure that parameters can be used as expected.
 
+# Version checking
+
+In case your scripts depend on certain binary versions, you may want to check the installed versions.
+
+Instead of doing this each time you run a script, this can be done in a central test file to be executed during troubleshooting an environment, or to be included in a precondition check.
+
+To run the example do `./examples/versioncheck/verify_versions.test`
+
+> **Note**
+> As version checking depends on a readable version format and changing versions always introduce compatibility uncertainties, the better approach is to test for the required functionality if possible.
 
 # TODO: add more examples
 
-- version check
 - email ismail nomail (sed test)
 - precondition for docker build

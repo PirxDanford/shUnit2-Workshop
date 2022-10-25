@@ -41,3 +41,7 @@ from within MobaXterm start a local shell and install from source
 curl -sLo /usr/bin/shunit2 https://raw.githubusercontent.com/kward/shunit2/master/shunit2
 chmod +x /usr/bin/shunit2
 ```
+
+# Troubleshooting
+
+In case of installation issues, please provide feedback via the issues section, or share your remediation with a PR.

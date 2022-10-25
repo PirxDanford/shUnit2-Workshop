@@ -1,0 +1,16 @@
+#!/bin/sh
+
+MINIMAL_AWK_VERSION=20200000
+MINIMAL_GREP_VERSION=2
+
+testVersionAWK() {
+  VERSION_AWK=$(awk --version | awk '{print $NF}')
+  assertTrue "Got $VERSION_AWK, your AWK version predates 2020 and should be updated" "[ $VERSION_AWK -gt $MINIMAL_AWK_VERSION ]"
+}
+
+testVersionGREP() {
+  VERSION_GREP=$(grep --version | awk '{print $NF}' | awk -F. '{print $1}')
+  assertFalse "Your grep version is lower than 2, this is quite old." "[ $VERSION_GREP -lt $MINIMAL_GREP_VERSION ]"
+}
+
+. shunit2
