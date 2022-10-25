@@ -1,0 +1,17 @@
+#!/bin/sh
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+. $DIR/random_silent
+
+testRandomRange() {
+  CHECK_RANGE=$(randomNumber 51 80)
+  assertTrue "Got $CHECK_RANGE, which is not within the range of 51 to 80" "[ $CHECK_RANGE -gt 50 -a $CHECK_RANGE -lt 81 ]"
+}
+
+testNoRandom() {
+  CHECK_VALUE=$(randomNumber 10 10)
+  assertEquals "10" "$CHECK_VALUE"
+}
+
+. shunit2

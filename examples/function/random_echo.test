@@ -1,0 +1,20 @@
+#!/bin/sh
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+testRandomWithinDefaultRange() {
+  CHECK_RANGE=$(. $DIR/random_echo)
+  assertTrue "Got $CHECK_RANGE, which is not within the range of 10 to 20" "[ $CHECK_RANGE -gt 9 -a $CHECK_RANGE -lt 21 ]"
+}
+
+testRandomWithinCustomRange() {
+  CHECK_RANGE=$(. $DIR/random_echo 51 80)
+  assertTrue "Got $CHECK_RANGE, which is not within the range of 51 to 80" "[ $CHECK_RANGE -gt 50 -a $CHECK_RANGE -lt 81 ]"
+}
+
+testNoRandom() {
+  CHECK_VALUE=$(. $DIR/random_echo 10 10)
+  assertEquals "10" "$CHECK_VALUE"
+}
+
+. shunit2

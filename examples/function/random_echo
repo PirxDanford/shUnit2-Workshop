@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Include random_silent from the same script directory
+source $(dirname "$0")"/random_silent"
+
+# define default parameters for min and max
+min=${1:-10}
+max=${2:-20}
+
+randomNumber $min $max
