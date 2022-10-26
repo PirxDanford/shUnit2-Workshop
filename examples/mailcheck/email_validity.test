@@ -1,0 +1,21 @@
+#!/bin/sh
+
+testGoodEmails() {
+  THE_GOOD=$(cat $(dirname "$0")"/ismail.txt")
+  for TRUEMAIL in $THE_GOOD
+  do
+      GREPCOUNT=$(echo "$TRUEMAIL" | grep -c -E "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")
+      assertTrue "The address '$TRUEMAIL' does not match the pattern." "[ $GREPCOUNT -eq 1 ]"
+  done
+}
+
+testBadEmails() {
+  THE_BAD=$(cat $(dirname "$0")"/nomail.txt")
+  for FALSEMAIL in $THE_BAD
+  do
+      GREPCOUNT=$(echo "$FALSEMAIL" | grep -c -E "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")
+      assertTrue "The address '$FALSEMAIL' matches the pattern, while it should not." "[ $GREPCOUNT -eq 0 ]"
+  done
+}
+
+. shunit2

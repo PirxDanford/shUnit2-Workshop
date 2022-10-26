@@ -41,7 +41,11 @@ To run the example do `./examples/versioncheck/verify_versions.test`
 > **Note**
 > As version checking depends on a readable version format and changing versions always introduce compatibility uncertainties, the better approach is to test for the required functionality if possible.
 
-# TODO: add more examples
+# E-Mail checking
 
-- email ismail nomail (sed test)
-- precondition for docker build
+In this example we parse two textfiles and perform tests on each line:
+
+`./examples/mailcheck/email_validity.test`
+
+> **Note**
+> See https://www.regular-expressions.info/email.html for details about why using regular expressions to match the RFC 5322 standard is error-prone.
