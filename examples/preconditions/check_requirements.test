@@ -1,0 +1,21 @@
+#!/bin/sh
+
+testMachineArchitecture() {
+  THIS_MACHINE=$(uname -m)
+  assertSame "Got $THIS_MACHINE but need x86_64" "x86_64" $THIS_MACHINE
+}
+
+testAvailabilityGCC() {
+  assertTrue "Did not find gcc" "[ $(gcc --version | grep -c 'not found') -eq 0 ]"
+}
+
+testFreeSpace() {
+  FREE_IN_TMP=$(df /tmp | tail -n 1 | awk '{print $4}')
+  assertTrue "Expect at least 2097152 (1 Gi) available in /tmp, got $FREE_IN_TMP" "[ $FREE_IN_TMP -ge 2097152 ]"
+}
+
+testDirectoryWriteable() {
+  assertTrue "Cannot write in /tmp" "[ -w /tmp ]"
+}
+
+. shunit2

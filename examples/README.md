@@ -30,16 +30,26 @@ Extends random_silent and introduces parameters with default values to directly 
 
 If the tests pass we additionally can be sure that parameters can be used as expected.
 
-# Version checking
+# Precondition checking
+
+## Version checks
 
 In case your scripts depend on certain binary versions, you may want to check the installed versions.
 
 Instead of doing this each time you run a script, this can be done in a central test file to be executed during troubleshooting an environment, or to be included in a precondition check.
 
-To run the example do `./examples/versioncheck/verify_versions.test`
+To run the example do `./examples/preconditions/verify_versions.test`
 
 > **Note**
 > As version checking depends on a readable version format and changing versions always introduce compatibility uncertainties, the better approach is to test for the required functionality if possible.
+
+## Requirement checks
+
+You might have certain requirements, like directories being writable.
+
+Some simple examples are included in
+
+`./examples/preconditions/check_requirements.test`
 
 # E-Mail checking
 
@@ -49,3 +59,5 @@ In this example we parse two textfiles and perform tests on each line:
 
 > **Note**
 > See https://www.regular-expressions.info/email.html for details about why using regular expressions to match the RFC 5322 standard is error-prone.
+
+# 
