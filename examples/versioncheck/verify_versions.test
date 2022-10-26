@@ -1,16 +1,39 @@
 #!/bin/sh
 
-MINIMAL_AWK_VERSION=20200000
+MINIMAL_AWK_YEAR=2020
+MINIMAL_AWK_MONTH=00
+MINIMAL_AWK_DAY=00
 MINIMAL_GREP_VERSION=2
+MINIMAL_CURL_VERSION=7
+MINIMAL_LESS_VERSION=500
+MINIMAL_VI_VERSION=8
 
 testVersionAWK() {
   VERSION_AWK=$(awk --version | awk '{print $NF}')
-  assertTrue "Got $VERSION_AWK, your AWK version predates 2020 and should be updated" "[ $VERSION_AWK -gt $MINIMAL_AWK_VERSION ]"
+  assertTrue "Got $VERSION_AWK, your AWK version predates $MINIMAL_AWK_YEAR and should be updated" "[ $VERSION_AWK -ge $MINIMAL_AWK_YEAR$MINIMAL_AWK_MONTH$MINIMAL_AWK_DAY ]"
 }
 
 testVersionGREP() {
   VERSION_GREP=$(grep --version | awk '{print $NF}' | awk -F. '{print $1}')
-  assertFalse "Your grep version is lower than 2, this is quite old." "[ $VERSION_GREP -lt $MINIMAL_GREP_VERSION ]"
+  assertFalse "Your grep version is lower than $MINIMAL_GREP_VERSION, this is quite old." "[ $VERSION_GREP -lt $MINIMAL_GREP_VERSION ]"
+}
+
+testVersionCURL() {
+  VERSION_CURL=$(curl --version | head -n 1 | awk '{print $2}')
+  VERSION_CURL_MAJOR=$(echo $VERSION_CURL | awk -F. '{print $1}')
+  assertFalse "Your CURL version of '$VERSION_CURL' is lower than $MINIMAL_CURL_VERSION, this is quite old." "[ $VERSION_CURL_MAJOR -lt $MINIMAL_CURL_VERSION ]"
+}
+
+testVersionLESS() {
+  VERSION_LESS=$(less --version | head -n 1 | awk '{print $2}')
+  VERSION_LESS_MAJOR=$(echo $VERSION_LESS | awk -F. '{print $1}')
+  assertFalse "Your 'less' version of '$VERSION_LESS' is lower than $MINIMAL_LESS_VERSION, this is quite old." "[ $VERSION_LESS_MAJOR -lt $MINIMAL_LESS_VERSION ]"
+}
+
+testVersionVI() {
+  VERSION_VI=$(vi --version | head -n 1 | awk '{print $5}')
+  VERSION_VI_MAJOR=$(echo $VERSION_VI | awk -F. '{print $1}')
+  assertFalse "Your VI version of '$VERSION_VI' is lower than $MINIMAL_VI_VERSION, this is quite old." "[ $VERSION_VI_MAJOR -lt $MINIMAL_VI_VERSION ]"
 }
 
 . shunit2
