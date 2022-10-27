@@ -6,7 +6,9 @@ git clone https://github.com/PirxDanford/shUnit2-Workshop.git`
 cd shUnit2-Workshop
 ./examples/shunit2.test
 ```
-if you see errors, please check the setup README.md.
+if you see errors when running the shunit2.test, please check the setup README.md.
+
+You might see errors when running the example code, this is fine as it is not meant to be successful on any given machine. For instance when doing the "testMachineArchitecture" test from check_requirements.test we are looking for x86_64, and maybe you are already on a quantum CPU or some ARM device, so it will fail.
 
 # Using a function
 
