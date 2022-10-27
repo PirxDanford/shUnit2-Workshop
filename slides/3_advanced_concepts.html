@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>shUnit 2 Workshop - Advanced Concepts</title>
+
+		<link rel="stylesheet" href="revealjs.4.4.0/dist/reset.css">
+		<link rel="stylesheet" href="revealjs.4.4.0/dist/reveal.css">
+		<link rel="stylesheet" href="revealjs.4.4.0/dist/theme/black.css">
+		<link rel="stylesheet" href="revealjs.4.4.0/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Advanced Concepts</h1>
+					Let's have a look at:<br>
+					<ul>
+						<li>Test Doubling</li>
+						<li>Code Coverage</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h4>Test Doubling</h4>
+						For a very detailed explanation read <a href="https://martinfowler.com/articles/mocksArentStubs.html" target="_blank">Mocks Aren't Stubs</a>.<br><br>
+						Obviously in shell scripts we will not use objects in the traditional sense of OOP, but still implementing mock or fake values will go a long way for tests that can go deep in the code, without making changes in live systems.
+					</section>
+					<section>
+						In this example "some_command" will read the fake file and after some operations it should export the value "expected" into $ENVIRONMENT_VARIABLE.
+						<pre><code>
+testCommandWithFile() {
+  . some_command /testdirectory/mock/FAKE_FILE >/dev/null 2>&1
+  assertEquals "expected" "$ENVIRONMENT_VALUE"
+}
+						</code></pre>
+						Ideally we will provide a file with content structured the same way as real data we want to process and know the expected result value.<br>
+						For an example how to loop through several lines and perform the same test look at "examples/mailcheck/email_validity.test".
+					</section>
+				</section>
+				<section>
+					<h4>Code Coverage</h4>
+					The base assumption here is, that with a high coverage of your code with tests, you can be sure that it will work as intended.<br><br>
+					As such this assumption is wrong, as of course the quality of the tests dictates how many real errors will be caught early on.<br><br>
+					For more details see <a href="https://en.wikipedia.org/wiki/Code_coverage" target="_blank">Code Coverage on Wikipedia</a>.<br><br>
+					There are several tools available,<br>known to work with shunit2 are bashcov and kcov.
+				</section>
+			</div>
+		</div>
+
+		<script src="revealjs.4.4.0/dist/reveal.js"></script>
+		<script src="revealjs.4.4.0/plugin/notes/notes.js"></script>
+		<script src="revealjs.4.4.0/plugin/markdown/markdown.js"></script>
+		<script src="revealjs.4.4.0/plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				width: '100%',
+				height: '100%',
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
