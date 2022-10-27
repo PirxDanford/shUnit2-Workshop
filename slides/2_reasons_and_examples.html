@@ -32,25 +32,85 @@
 									<li>Reduce technical debt at an early stage</li>
 								</ul>
 							</li>
-							<li>Saving money: catching bugs early on, will save costs in QA and customer support</li>
+							<li>Saving money:<br>catching bugs early on, will save costs in QA and customer support</li>
 							<li>Reliable code that is easy to reuse</li>
 						</ul>
 					</section>
 					<section>
-						In a nutshell: shell scripts deserve the same love that we grant our code in general and implementing unit testing will provide many benefits.
+						<div style="width:75%;margin: 0 auto;">
+							In a nutshell: shell scripts deserve the same love that we grant our code in general and implementing unit testing will provide many benefits.
+						</div>
 					</section>
 				</section>
 				<section>
 					<section>
-						Examples for some use cases:
+						<h1>Example Scenarios</h1>
+						On the following pages we will look at:<br>
 						<ul>
 							<li>Checking your own code :-)</li>
-							<li>Interoperability check</li>
+							<li>Interoperability checks</li>
 							<li>Binary availability</li>
 							<li>Version requirements</li>
 							<li>Environment issues</li>
-						</ul><br><br>
-						TODO: provide some example source code to include in here and dive much deeper into how it is done and what output to expect (include screenshots)
+						</ul>
+					</section>
+					<section>
+						<h4>Checking your own code</h4>
+						<nobr>This scenario comes without example code, but with some additional reasoning.</nobr><br>
+						Imagine you have a script that just does:
+						<pre><code>
+							#!/bin/sh
+							echo Hello World :-)
+						</code></pre>
+						Writing a test and running it, already provides the insight of:<br>
+						<ul>
+							<li>The script is located correctly</li>
+							<li>The script is executable</li>
+							<li>The shebang and shell binary work</li>
+							<li>The echo and shunit2 command work</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Interoperability checks</h4>
+						Even with the most simple scripts and common tools, there is always an uncertainty if something will work as expected. Especially if you do not have full control about where the code is running.
+						<pre><code>
+sed -i 's/hello/goodbye/' example
+sed -i.bak 's/hello/goodbye/' example
+						</code></pre>
+						The first line represents the GNU flavour and will do the in-file replacement without a backup file. Not compatible to the BSD flavour.<br>
+						The second line will create a backup copy with the extension .bak and works for both, the GNU as well as the BSD flavour of sed.
+					</section>
+					<section>
+						<h4>Binary availability</h4>
+						This simple error cause has inflicted hours of lost time,<br>as sometimes the clue is hidden deep in some error logs.<br>
+						Well, just write a test for it!
+						<pre><code>
+#!/bin/sh
+
+testAvailabilityBASH() {
+  assertTrue "Did not find the bash executable" "[[ -x "$(which 'bash')" ]]"
+}
+
+. shunit2
+						</code></pre>
+					</section>
+					<section>
+						<h4>Version requirements</h4>
+						There is a number of examples available at<br>"examples/preconditions/verify_versions.test",<br>but version checking is a difficult topic.<br><br>
+						The safe route is, to check if the expected functionality is working.<br><br>
+						As this is a quick test method and if you do have full control of the target environments, or do only checks on your own components, then it should be safe to choose this method.
+					</section>
+					<section>
+						<h4>Environment issues</h4>
+						There is a number of examples available at<br>"examples/preconditions/check_requirements.test".<br><br>
+						Common causes for errors can be:<br>
+						<ul>
+							<li>Wrong target architecture or operating system version</li>
+							<li>Bad permissions on directories and/or files</li>
+							<li>Not enough memory and/or disk space</li>
+							<li>Networking issues</li>
+						</ul><br>
+						To check for such errors before an installation,<br>or during troubleshooting can save a lot of time.
 					</section>
 				</section>
 			</div>
@@ -63,6 +123,8 @@
 		<script>
 			Reveal.initialize({
 				hash: true,
+				width: '100%',
+				height: '100%',
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
