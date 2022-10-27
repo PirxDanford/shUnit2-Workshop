@@ -18,6 +18,8 @@ The workshop is split into three sections, with different purposes.
 
 In the slides subdirectory you can find presentation material, outlining what shUnit 2 is, why you should use it and some concept overviews.
 
+The content is also published to GitHub pages, available at https://pirxdanford.github.io/shUnit2-Workshop/
+
 ### Setup
 
 This hands-on part is helping you to get shUnit 2 up and running on your machine and pointing out different ways to include it in projects e.g. in a CI environment.
