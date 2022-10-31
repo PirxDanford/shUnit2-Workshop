@@ -44,6 +44,44 @@
 				</section>
 				<section>
 					<section>
+						<h1>Easy to get started</h1>
+						Once shunit2 is installed, writing tests is as easy as
+						<pre><code>
+#!/bin/sh
+
+testForOneEqualsOne() {
+  assertTrue "Someone has changed reality, suddenly 1 does not equal 1!" "[[ 1 -eq 1 ]]"
+}
+
+testThatWillFail() {
+  assertFalse "Failing as expected, your reality is fine :-)" "[[ 1 -eq 1 ]]"
+}
+
+. shunit2
+						</code></pre>
+					</section>
+					<section>
+						So we have a script with 3 parts:<br>
+						<ol>
+							<li>The shebang to select which shell interpreter to use</li>
+							<li>A collection of tests, likely doing some assertion</li>
+							<li>A call to shunit2 at the end of the script</li>
+						</ol><br><br>
+						And the result could look like<br>
+						<img src="img/run_example.png" alt="Run Example Image" />
+					</section>
+					<section>
+						At <a href="https://github.com/kward/shunit2#asserts" target="_blank">https://github.com/kward/shunit2#asserts</a> you will find all available asserts, as of right now (2022-10-31) we have:<br><br>
+						<ul>
+							<li>Simple value comparison with assertEquals, assertNotEquals, assertSame and assertNotSame</li>
+							<li>A very versatile check using the expression syntax of the shell interpreter with assertTrue and assertFalse</li>
+							<li>Substring checking with assertContains and assertNotContains</li>
+							<li>Empty string checking with assertNull and assertNotNull</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h1>Example Scenarios</h1>
 						On the following pages we will look at:<br>
 						<ul>
