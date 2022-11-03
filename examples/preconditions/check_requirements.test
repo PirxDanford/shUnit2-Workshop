@@ -3,23 +3,28 @@
 testMachineArchitecture() {
   THIS_MACHINE=$(uname -m)
   assertSame "Got $THIS_MACHINE but need x86_64" "x86_64" $THIS_MACHINE
+  return 0
 }
 
 testAvailabilityGCC() {
   assertTrue "Did not find gcc" "[ $(gcc --version | grep -c 'not found') -eq 0 ]"
+  return 0
 }
 
 testAvailabilityBASH() {
   assertTrue "Did not find the bash executable" "[[ -x "$(which 'bash')" ]]"
+  return 0
 }
 
 testFreeSpace() {
   FREE_IN_TMP=$(df /tmp | tail -n 1 | awk '{print $4}')
   assertTrue "Expect at least 2097152 (1 Gi) available in /tmp, got $FREE_IN_TMP" "[ $FREE_IN_TMP -ge 2097152 ]"
+  return 0
 }
 
 testDirectoryWriteable() {
   assertTrue "Cannot write in /tmp" "[ -w /tmp ]"
+  return 0
 }
 
 . shunit2

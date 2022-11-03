@@ -7,6 +7,7 @@ testGoodEmails() {
       GREPCOUNT=$(echo "$TRUEMAIL" | grep -c -E "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")
       assertTrue "The address '$TRUEMAIL' does not match the pattern." "[ $GREPCOUNT -eq 1 ]"
   done
+  return 0
 }
 
 testBadEmails() {
@@ -16,6 +17,7 @@ testBadEmails() {
       GREPCOUNT=$(echo "$FALSEMAIL" | grep -c -E "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")
       assertTrue "The address '$FALSEMAIL' matches the pattern, while it should not." "[ $GREPCOUNT -eq 0 ]"
   done
+  return 0
 }
 
 . shunit2

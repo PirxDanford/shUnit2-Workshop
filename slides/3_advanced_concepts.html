@@ -34,6 +34,7 @@
 testCommandWithFile() {
   . some_command /testdirectory/mock/FAKE_FILE >/dev/null 2>&1
   assertEquals "expected" "$ENVIRONMENT_VALUE"
+  return 0
 }
 						</code></pre>
 						Ideally we will provide a file with content structured the same way as real data we want to process and know the expected result value.<br>

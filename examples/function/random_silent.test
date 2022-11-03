@@ -7,11 +7,13 @@ DIR="$( cd "$( dirname "$0" )" && pwd )"
 testRandomRange() {
   CHECK_RANGE=$(randomNumber 51 80)
   assertTrue "Got $CHECK_RANGE, which is not within the range of 51 to 80" "[ $CHECK_RANGE -gt 50 -a $CHECK_RANGE -lt 81 ]"
+  return 0
 }
 
 testNoRandom() {
   CHECK_VALUE=$(randomNumber 10 10)
   assertEquals "10" "$CHECK_VALUE"
+  return 0
 }
 
 . shunit2

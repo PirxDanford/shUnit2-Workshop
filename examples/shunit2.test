@@ -2,6 +2,7 @@
 
 testOneIsOne() {
   assertEquals 1 1
+  return 0
 }
 
 . shunit2
