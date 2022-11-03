@@ -30,7 +30,7 @@
 					</section>
 					<section>
 						In this example "some_command" will read the fake file and after some operations it should export the value "expected" into $ENVIRONMENT_VARIABLE.
-						<pre><code>
+						<pre class="bash"><code>
 testCommandWithFile() {
   . some_command /testdirectory/mock/FAKE_FILE >/dev/null 2>&1
   assertEquals "expected" "$ENVIRONMENT_VALUE"

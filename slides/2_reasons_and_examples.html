@@ -46,7 +46,7 @@
 					<section>
 						<h1>Easy to get started</h1>
 						Once shunit2 is installed, writing tests is as easy as
-						<pre><code>
+						<pre class="bash"><code>
 #!/bin/sh
 
 testForOneEqualsOne() {
@@ -98,9 +98,10 @@ testThatWillFail() {
 						<h4>Checking your own code</h4>
 						<nobr>This scenario comes without example code, but with some additional reasoning.</nobr><br>
 						Imagine you have a script that just does:
-						<pre><code>
-							#!/bin/sh
-							echo Hello World :-)
+						<pre class="bash"><code>
+#!/bin/sh
+
+echo Hello World :-)
 						</code></pre>
 						Writing a test and running it, already provides the insight of:<br>
 						<ul>
@@ -113,7 +114,7 @@ testThatWillFail() {
 					<section>
 						<h4>Interoperability checks</h4>
 						Even with the most simple scripts and common tools, there is always an uncertainty if something will work as expected. Especially if you do not have full control about where the code is running.
-						<pre><code>
+						<pre class="bash"><code>
 sed -i 's/hello/goodbye/' example
 sed -i.bak 's/hello/goodbye/' example
 						</code></pre>
@@ -124,7 +125,7 @@ sed -i.bak 's/hello/goodbye/' example
 						<h4>Binary availability</h4>
 						This simple error cause has inflicted hours of lost time,<br>as sometimes the clue is hidden deep in some error logs.<br>
 						Well, just write a test for it!
-						<pre><code>
+						<pre class="bash"><code>
 #!/bin/sh
 
 testAvailabilityBASH() {
