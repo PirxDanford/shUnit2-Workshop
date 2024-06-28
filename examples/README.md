@@ -2,7 +2,7 @@
 
 In your shell and directory of choosing do
 ```console
-git clone https://github.com/PirxDanford/shUnit2-Workshop.git`
+git clone https://github.com/PirxDanford/shUnit2-Workshop.git
 cd shUnit2-Workshop
 ./examples/shunit2.test
 ```
