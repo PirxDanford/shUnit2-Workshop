@@ -30,7 +30,7 @@
 						Obviously in shell scripts we will not use objects in the traditional sense of OOP, but still implementing mock or fake values will go a long way for tests that can go deep in the code, without making changes in live systems.
 					</section>
 					<section>
-						In this example "some_command" will read the fake file and after some operations it should export the value "expected" into $ENVIRONMENT_VARIABLE.
+						In this example the "some_command" executable will read the fake file and export the string "expected" into $ENVIRONMENT_VARIABLE, which is what we test.
 						<pre class="bash"><code>
 testCommandWithFile() {
   . some_command /testdirectory/mock/FAKE_FILE >/dev/null 2>&1
@@ -38,7 +38,9 @@ testCommandWithFile() {
   return 0
 }
 						</code></pre>
-						Ideally we will provide a file with content structured the same way as real data we want to process and know the expected result value.<br>
+						Using mock data allows to perform unit tests, so we can be sure that the code works as expected.<br>
+						This is important as with integration tests, there can always be uncertainties as to the interface availability or even changes in the data format.<br>
+						Of course it also means, that if any data format has relevant changes, we need to update the mock data.<br>
 						For an example how to loop through several lines and perform the same test look at "examples/mailcheck/email_validity.test".
 					</section>
 				</section>
